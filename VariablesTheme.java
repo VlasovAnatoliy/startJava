@@ -98,7 +98,8 @@ public class VariablesTheme {
         System.out.println("    "+solidus + "  " + backslash + "");
         System.out.println("   " +solidus + underscore1 + open + " " + close + backslash + "");
         System.out.println("  "+solidus + "      " + backslash);
-        System.out.println(" "+solidus + underscore1 + underscore1 + underscore1 + underscore1 + solidus + backslash + underscore1 + underscore1 + backslash);
+        System.out.println(" "+solidus + underscore1 + underscore1 + underscore1 + underscore1 
+                + solidus + backslash + underscore1 + underscore1 + backslash);
 
     System.out.println("\n8. Вывод количества сотен, десятков и единиц числа");
         int sum = 123;
