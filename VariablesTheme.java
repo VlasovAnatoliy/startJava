@@ -11,27 +11,27 @@ public class VariablesTheme {
         boolean infoPc = true;
         char versionCore = 'i';
         System.out.println(versionCore + "3" + " Версия процессора");
-        System.out.println(numCore + "- Количество ядер процессора");
-        System.out.println(rateCore + "- Частота процессора");
-        System.out.println(bitOs + "- Тип системы");
-        System.out.println(numRam + "- Частота Ram");
-        System.out.println(memoryRam + "- Память Ram");
-        System.out.println(modelGpu + "- Модель видео карты");
-        System.out.println(infoPc + "- Информация верна");
+        System.out.println(numCore + " - Количество ядер процессора");
+        System.out.println(rateCore + " - Частота процессора");
+        System.out.println(bitOs + " - Тип системы");
+        System.out.println(numRam + " - Частота Ram");
+        System.out.println(memoryRam + " - Память Ram");
+        System.out.println(modelGpu + " - Модель видео карты");
+        System.out.println(infoPc + " - Информация верна");
 
         System.out.println("\n2. Расчет стоимости товара со скидкой.");
         int penPrice = 100;
         int bookPrice = 200;
         int discountAmount = (penPrice + bookPrice) / 100 * 11;
         int discountPrice = (penPrice + bookPrice) - discountAmount;
-        System.out.println(discountAmount + "- сумма скидки");
-        System.out.println(discountPrice + "- общая стоимость товаров со скидкой");
+        System.out.println(discountAmount + " - сумма скидки");
+        System.out.println(discountPrice + " - общая стоимость товаров со скидкой");
 
         System.out.println("\n3. Вывод слова JAVA");
         System.out.println("   J    a  v     v  a");
         System.out.println("   J   a a  v   v  a a");
         System.out.println("J  J  aaaaa  V V  aaaaa");
-        System.out.println(" JJ  a     a  V  a     a\n");
+        System.out.println(" JJ  a     a  V  a     a");
 
         System.out.println("\n4. Вывод min и max значений целых числовых типов");
         byte maxByte = 127;
@@ -90,8 +90,8 @@ public class VariablesTheme {
         char bracketClose = ')';
         System.out.println("     "+ solidus + backslash);
         System.out.println("    "+ solidus + "  " + backslash + "");
-        System.out.println("   " + solidus + underscore1 + bracketOpen + " " + bracketClose + backslash 
-                + "");
+        System.out.println("   " + solidus + underscore1 + bracketOpen + " "
+         + bracketClose + backslash + "");
         System.out.println("  "+ solidus + "      " + backslash);
         System.out.println(" "+ solidus + underscore1 + underscore1 + underscore1 + underscore1 
                 + solidus + backslash + underscore1 + underscore1 + backslash);
