@@ -89,11 +89,19 @@ public class IfElseStatementTheme {
         System.out.println("\n5.Определение символа по его коду");
         char symbol = '\u0057';
         boolean smallSymbol = (symbol >= 'a' && symbol <= 'z');
+<<<<<<< HEAD
         boolean bigSymbol = (symbol >= 'A' && symbol <= 'Z');
         boolean numericCharacter = (symbol >= '0' && symbol <= '9');
         if (smallSymbol) {
             System.out.println(symbol + " - маленькая буква");
         } else if (bigSymbol) {
+=======
+        boolean bigBymbol = (symbol >= 'A' && symbol <= 'Z');
+        boolean numericCharacter = (symbol >= '0' && symbol <= '9');
+        if (smallSymbol) {
+            System.out.println(symbol + " - маленькая буква");
+        } else if (bigBymbol) {
+>>>>>>> 12e05366fd86840ab35dc7285388c1ad90181e0f
             System.out.println(symbol + " - большая буква");
         } else if (numericCharacter) {
             System.out.println(symbol + " - число");
