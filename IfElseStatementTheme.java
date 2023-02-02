@@ -68,21 +68,18 @@ public class IfElseStatementTheme {
         int tensNum2 = (nums2 / 10) % 10;
         int hundredsNum2 = nums2 / 100;
         System.out.println("Исходные числа " + nums1 + "," + nums2);
-        if (onesNum1 == onesNum2) {
-            System.out.println("\tРазряд единиц" );
-            System.out.println("Одинаковые цифры: " + onesNum1);
-        }
-        if (tensNum1 == tensNum2) {
-            System.out.println("\tРазряд десяток ");
-            System.out.println("Одинаковые цифры: " + tensNum1);
-        }
-        if (hundredsNum1 == hundredsNum2) {
-            System.out.println("\tРазряд сотен");
-            System.out.println("Одинаковые цифры: " + hundredsNum1);
-        }
-        if ((onesNum1 != onesNum2) && (tensNum1 != tensNum2)
-                && (hundredsNum1 != hundredsNum2)) {
-            System.out.println("Равных цифр нет");
+         if ((onesNum1 != onesNum2) && (tensNum1 != tensNum2) && (hundredsNum1 != hundredsNum2)) {
+        System.out.println("Равных цифр нет");
+        } else {
+            if (onesNum1 == onesNum2) {
+                System.out.println("Одинаковые цифры: " + onesNum1 + ", разряд единиц");
+            }
+            if (tensNum1 == tensNum2) {
+                System.out.println("Одинаковые цифры: " + tensNum1 + ", разряд десяток");
+            }
+            if (hundredsNum1 == hundredsNum2) {
+                System.out.println("Одинаковые цифры: " + hundredsNum1 + ", разряд сотен");
+            }
         }
 
         System.out.println("\n5.Определение символа по его коду");
