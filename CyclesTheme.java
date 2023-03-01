@@ -1,80 +1,90 @@
 public class CyclesTheme {
     public static void main(String[] args) {
         System.out.println("\n1. Подсчет суммы четных и нечетных чисел");
-        int evenNum = 0;
-        int oddNum = 0;
-        int count = -10;
+        int sumOfEvenNum = 0;
+        int sumOfOddNum = 0;
+        int counter = -10;
         do {
-            if (count % 2 == 0) {
-                evenNum += count;
+            if (counter % 2 == 0) {
+                sumOfEvenNum += counter;
             } else {
-                oddNum += count;
+                sumOfOddNum += counter;
             }
-        count++;
-        } while (count <= 21);
-        System.out.println("в промежутке [-10, 21] сумма четных чисел = "
-                    + evenNum + ", а нечетных = " + oddNum);
+            counter++;
+        } while (counter <= 21);
+        System.out.println("в промежутке [-10, 21] сумма четных чисел = " +
+                sumOfEvenNum + ", а нечетных = " + sumOfOddNum);
 
         System.out.println("\n2. Вывод чисел в интервале (min и max) в порядке убывания");
-        int numMax = 10;
-        int numMed = 5;
-        int numMin = -1;
+        int numOne = 10;
+        int numTwo = 5;
+        int numThree = -1;
+        int numMax = numOne;
+        int numMin = numOne;
+        if (numTwo > numMax) {
+            numMax = numTwo;
+        } else if (numTwo < numMin) {
+            numMin = numTwo;
+        }
+        if (numThree > numMax) {
+            numMax = numThree;
+        } else if (numThree < numMin) {
+            numMin = numThree;
+        }
         for (int i = numMax - 1; i > numMin; i--) {
-            if (numMax > numMed && numMax > numMin) {
-                System.out.print(" ");
-                System.out.print(i);
-            }
+            System.out.print(" " + i);
         }
 
         System.out.println("\n3. Вывод реверсивного числа и суммы его цифр");
         int num = 1234;
-        int reverseNumber = 0;
         int sum = 0;
         while(num != 0) {
-            int onesNum = num % 10;
-            reverseNumber = reverseNumber * 10 + onesNum;
+            int digit = num % 10;
             num /= 10;
-            sum = sum + onesNum;
+            sum += digit;
+            System.out.println(digit);
         }
-        System.out.println("Исходное число в обратном порядке: " + reverseNumber
-                + "\n сумма цифр: " + sum);
+        System.out.println("Сумма цифр: " + sum);
 
         System.out.println("\n4. Вывод чисел на консоль в несколько строк");
-        int maxNumber = 24;
-        int numbersPerLine = 5;
-        int zeroPadding = 0;
-        for (int i = 1; i < maxNumber; i += 2) {
-            System.out.printf("%2d", i);
-            zeroPadding++;
-            if (zeroPadding % numbersPerLine == 0) {
+        int endRange = 24;
+        int expectedNumInLine = 5;
+        int actualNumInLine = 0;
+        for (int i = 1; i < endRange; i += 2) {
+            System.out.printf("%3d", i);
+            actualNumInLine++;
+            if (actualNumInLine % expectedNumInLine == 0) {
                 System.out.println();
-                zeroPadding = 0;
-            } else {
-                System.out.print(" ");
+                actualNumInLine = 0;
             }
         }
-        if (zeroPadding != 0) {
-            int remainingZeros = numbersPerLine - zeroPadding;
+        if (actualNumInLine > 0) {
+            int remainingZeros = expectedNumInLine - actualNumInLine;
             for (int i = 0; i < remainingZeros; i++) {
-                System.out.printf("%2d", 0);
+                System.out.printf("%3d", 0);
                 if (i != remainingZeros - 1) {
-                    System.out.print(" ");
                 }
             }
         }
 
         System.out.println("\n5. Проверка количества двоек на четность/нечетность");
         int number = 3242592;
-        int counter = 0;
+        int countTwos = 0;
         int temp = number;
         while (temp > 0) {
             int lastDigit = temp % 10;
             if (lastDigit == 2) {
-                counter++;
+                countTwos++;
             }
-            temp = temp / 10;
+            temp /= 10;
         }
-        System.out.println("Число " + number + " содержит " + counter + " количество двоек");
+        if (countTwos % 2 == 0) {
+            System.out.println("Число " + number + " содержит " + countTwos +
+                " (четное) количество двоек");
+        } else {
+            System.out.println("Число " + number + " содержит " + countTwos +
+                " (нечетное) количество двоек");
+        }
 
         System.out.println("\n6. Отображение фигур в консоли");
         char star = '*';
