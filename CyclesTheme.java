@@ -1,44 +1,44 @@
 public class CyclesTheme {
     public static void main(String[] args) {
         System.out.println("\n1. Подсчет суммы четных и нечетных чисел");
-        int sumOfEvenNum = 0;
-        int sumOfOddNum = 0;
+        int sumEvenNum = 0;
+        int sumOddNum = 0;
         int counter = -10;
         do {
             if (counter % 2 == 0) {
-                sumOfEvenNum += counter;
+                sumEvenNum += counter;
             } else {
-                sumOfOddNum += counter;
+                sumOddNum += counter;
             }
             counter++;
         } while (counter <= 21);
         System.out.println("в промежутке [-10, 21] сумма четных чисел = " +
-                sumOfEvenNum + ", а нечетных = " + sumOfOddNum);
+                sumEvenNum + ", а нечетных = " + sumOddNum);
 
         System.out.println("\n2. Вывод чисел в интервале (min и max) в порядке убывания");
-        int numOne = 10;
-        int numTwo = 5;
-        int numThree = -1;
-        int numMax = numOne;
-        int numMin = numOne;
-        if (numTwo > numMax) {
-            numMax = numTwo;
-        } else if (numTwo < numMin) {
-            numMin = numTwo;
+        int num1 = 10;
+        int num2 = 5;
+        int num3 = -1;
+        int max = num1;
+        int min = num1;
+        if (num2 > max) {
+            max = num2;
+        } else if (num2 < min) {
+            min = num2;
         }
-        if (numThree > numMax) {
-            numMax = numThree;
-        } else if (numThree < numMin) {
-            numMin = numThree;
+        if (num3 > max) {
+            max = num3;
+        } else if (num3 < min) {
+            min = num3;
         }
-        for (int i = numMax - 1; i > numMin; i--) {
+        for (int i = max - 1; i > min; i--) {
             System.out.print(" " + i);
         }
 
         System.out.println("\n3. Вывод реверсивного числа и суммы его цифр");
         int num = 1234;
         int sum = 0;
-        while(num != 0) {
+        while(num > 0) {
             int digit = num % 10;
             num /= 10;
             sum += digit;
@@ -62,21 +62,19 @@ public class CyclesTheme {
             int remainingZeros = expectedNumInLine - actualNumInLine;
             for (int i = 0; i < remainingZeros; i++) {
                 System.out.printf("%3d", 0);
-                if (i != remainingZeros - 1) {
-                }
             }
         }
 
         System.out.println("\n5. Проверка количества двоек на четность/нечетность");
         int number = 3242592;
         int countTwos = 0;
-        int temp = number;
-        while (temp > 0) {
-            int lastDigit = temp % 10;
-            if (lastDigit == 2) {
+        int copyNumber = number;
+        while (copyNumber > 0) {
+            int digit = copyNumber % 10;
+            if (digit == 2) {
                 countTwos++;
             }
-            temp /= 10;
+            copyNumber /= 10;
         }
         if (countTwos % 2 == 0) {
             System.out.println("Число " + number + " содержит " + countTwos +
@@ -87,44 +85,38 @@ public class CyclesTheme {
         }
 
         System.out.println("\n6. Отображение фигур в консоли");
-        char star = '*';
-        char hash= '#';
-        char dollarSign = '$';
-        for (int string = 5; string < 10; string++) {
-            for (int counters = 1; counters <= 10; counters++) {
-                System.out.print(star);
+        for (int count1 = 5; count1 < 10; count1++) {
+            for (int j = 1; j <= 10; j++) {
+                System.out.print('*');
             }
-            System.out.println("\n");
+            System.out.println("");
         }
-
-        int heightTriangle = 5;
-        int string = heightTriangle;
-        while (string >= 1) {
-            int column = 1;
-            while (column <= string) {
-                System.out.print(hash);
-                column++;
+        int row1 = 5;
+        int count2 = row1;
+        while (count2 >= 1) {
+            int j = 1;
+            while (j <= count2) {
+                System.out.print('#');
+                j++;
             }
-            System.out.println("\n");
-            string--;
+            System.out.println("");
+            count2--;
         }
-
-        int height = 5;
-        int line = 1;
-        int column2 = 1;
+        int row2 = 3;
+        int count3 = 1;
+        int digit = 1;
         do {
+            int j = 1;
             do {
-                if (column2 == 1 || column2 == line || line == height) {
-                    System.out.print("$");
-                } else {
-                    System.out.print("");
-                }
-                column2++;
-            } while (column2 <= height);
-            System.out.println("\n");
-            column2 = 1;
-            line++;
-        } while (line <= height);
+                System.out.print("$");
+                j++;
+            } while (j <= count3);
+            System.out.println();
+            if (count3 == row2) {
+                digit = -1;
+            }
+            count3 += digit;
+        } while (count3 >= 1);
 
         System.out.println("\n7. Отображение ASCII-символов");
         System.out.printf("%8s%8s%n", "Dec", "Char");
@@ -138,38 +130,38 @@ public class CyclesTheme {
         }
 
         System.out.println("\n8. Проверка, является ли число палиндромом");
-        int originalNumber = 1234321;
-        int reversedNumber = 0;
-        int temp1 = originalNumber;
+        int num4 = 1234321;
+        int reversedNum = 0;
+        int temp1 = num4;
         while (temp1 != 0) {
             int remainder = temp1 % 10;
-            reversedNumber = reversedNumber * 10 + remainder;
+            reversedNum = reversedNum * 10 + remainder;
             temp1 /= 10;
         }
-        if (originalNumber == reversedNumber) {
-            System.out.println("Число " + originalNumber + " является палиндромом");
+        if (num4 == reversedNum) {
+            System.out.println("Число " + num4 + " является палиндромом");
         } else {
-            System.out.println("Число " + originalNumber + " не является палиндромом");
+            System.out.println("Число " + num4 + " не является палиндромом");
         }
 
         System.out.println("\n9. Определение, является ли число счастливым");
-        int initialNumber = 123456;
-        int firstHalf = initialNumber / 1000;
-        int secondHalf = initialNumber % 1000;
+        int num5 = 123456;
+        int firstHalf = num5 / 1000;
+        int secondHalf = num5 % 1000;
         int sum1 = 0;
         while (firstHalf != 0) {
-            int digit = firstHalf % 10;
-            sum1 += digit;
+            int digit1 = firstHalf % 10;
+            sum1 += digit1;
             firstHalf /= 10;
         }
         int sum2 = 0;
         while (secondHalf != 0) {
-            int digit = secondHalf % 10;
-            sum2 += digit;
+            int digit1 = secondHalf % 10;
+            sum2 += digit1;
             secondHalf /= 10;
         }
-        System.out.printf("Сумма цифр %03d = %d\n", initialNumber / 1000, sum1);
-        System.out.printf("Сумма цифр %03d = %d\n", initialNumber % 1000, sum2);
+        System.out.printf("Сумма цифр %03d = %d\n", num5 / 1000, sum1);
+        System.out.printf("Сумма цифр %03d = %d\n", num5 % 1000, sum2);
         boolean isHappy = sum1 == sum2;
         if (isHappy) {
             System.out.println("Число является счастливым!");
@@ -179,15 +171,11 @@ public class CyclesTheme {
 
         System.out.println("\n10. Вывод таблицы умножения Пифагора");
         int tableSize = 9;
-        
-        // Верхняя горизонтальная линия
         System.out.print("  |");
         for (int i = 2; i <= tableSize; i++) {
             System.out.printf("%4d", i);
         }
         System.out.println("\n" + "_".repeat(tableSize * 4));
-        
-        // Таблица умножения
         for (int i = 2; i <= tableSize; i++) {
             System.out.printf("%2d|", i);
             for (int j = 2; j <= tableSize; j++) {
@@ -195,6 +183,5 @@ public class CyclesTheme {
             }
             System.out.println("\n");
         }
-
     }
 }
