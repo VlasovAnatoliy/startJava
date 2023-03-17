@@ -84,7 +84,7 @@ public class CyclesTheme {
         }
 
         System.out.println("\n6. Отображение фигур в консоли");
-        for (int i = 5; i < 10; i++) {
+        for (int i = 1; i <= 5; i++) {
             for (int j = 1; j <= 10; j++) {
                 System.out.print('*');
             }
@@ -152,15 +152,13 @@ public class CyclesTheme {
         int firstHalf = num7 / 1000;
         int secondHalf = num7 % 1000;
         int sum1 = 0;
-        while (firstHalf != 0) {
-            int digit1 = firstHalf % 10;
-            sum1 += digit1;
-            firstHalf /= 10;
-        }
         int sum2 = 0;
-        while (secondHalf != 0) {
-            int digit1 = secondHalf % 10;
-            sum2 += digit1;
+        while (firstHalf != 0 && secondHalf != 0) {
+            int digit1 = firstHalf % 10;
+            int digit2 = secondHalf % 10;
+            sum1 += digit1;
+            sum2 += digit2;
+            firstHalf /= 10;
             secondHalf /= 10;
         }
         System.out.printf("Сумма цифр %03d = %d\n", num7 / 1000, sum1);
@@ -174,17 +172,17 @@ public class CyclesTheme {
 
         System.out.println("\n10. Вывод таблицы умножения Пифагора");
         int tableSize = 9;
-        System.out.print("  |");
+        System.out.print(" |");
         for (int i = 2; i <= tableSize; i++) {
-            System.out.printf("%4d", i);
+            System.out.printf("%3d", i);
         }
-        System.out.println("\n" + "_".repeat(tableSize * 4));
+        System.out.println("\n" + "-".repeat(tableSize * 3));
         for (int i = 2; i <= tableSize; i++) {
-            System.out.printf("%2d|", i);
+            System.out.printf("%1d|", i);
             for (int j = 2; j <= tableSize; j++) {
-                System.out.printf("%4d", i * j);
+                System.out.printf("%3d", i * j);
             }
-            System.out.println("\n");
+            System.out.println("");
         }
     }
 }
