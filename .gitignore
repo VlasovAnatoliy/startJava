@@ -1,5 +1,6 @@
-*.class
-*.DS_Store
+*.class 
+out
 options
 optionsj
-out/
+*.iml
+.idea
