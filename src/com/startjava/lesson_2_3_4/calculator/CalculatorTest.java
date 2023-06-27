@@ -7,19 +7,19 @@ public class CalculatorTest {
         Scanner scanner = new Scanner(System.in);
         String answer = "yes";
         while (answer.equals("yes")) {
-            System.out.println("Введите первое число:");
-            int num1 = scanner.nextInt();
-            System.out.println("Введите знак математической операции:");
-            char sign = scanner.next().charAt(0);
-            System.out.println("Введите второе число:");
-            int num2 = scanner.nextInt();
-            int result = Calculator.calculate(num1, num2, sign);
-            System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
+            System.out.println("Введите математическое выражение:");
+            String expression = scanner.nextLine();
+            double result = Calculator.calculate(expression);
+            if (result == (int) result) {
+                System.out.printf("Результат: %.0f\n", result);
+            } else {
+                System.out.printf("Результат: %.3f\n", result);
+            }
             System.out.println("Хотите продолжить вычисления? [yes/no]:");
-            answer = scanner.next();
+            answer = scanner.nextLine();
             while (!answer.equals("yes") && !answer.equals("no")) {
                 System.out.println("Некорректный ответ. Хотите продолжить вычисления? [yes/no]:");
-                answer = scanner.next();
+                answer = scanner.nextLine();
             }
         }
         System.out.println("Работа программы завершена");

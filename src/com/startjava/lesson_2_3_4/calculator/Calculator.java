@@ -1,30 +1,35 @@
 package com.startjava.lesson_2_3_4.calculator;
 
-import java.util.Scanner;
-
 public class Calculator {
-    public static int calculate(int num1, int num2, char sign) {
-        int result = 0;
+    public static double calculate(String expression) {
+        String[] elements = expression.split(" ");
+        double num1 = Double.parseDouble(elements[0]);
+        double num2 = Double.parseDouble(elements[2]);
+        char sign = elements[1].charAt(0);
+        double result;
         switch (sign) {
             case '+':
-                return num1 + num2;
+                result = num1 + num2;
+                break;
             case '-':
-                return num1 - num2;
+                result = num1 - num2;
+                break;
             case '*':
-                return num1 * num2;
+                result = num1 * num2;
+                break;
             case '/':
-                return num1 / num2;
+                result = num1 / num2;
+                break;
             case '^':
-                result = 1;
-                for (int i = 0; i < num2; i++) {
-                    result *= num1;
-                }
-                return result;
+                result = Math.pow(num1, num2);
+                break;
             case '%':
-                return num1 % num2;
+                result = num1 % num2;
+                break;
             default:
                 System.out.println("Введенный знак операции не поддерживается");
                 return 0;
         }
+        return result;
     }
 }
