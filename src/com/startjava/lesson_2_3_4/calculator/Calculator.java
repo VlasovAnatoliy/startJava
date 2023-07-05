@@ -3,33 +3,25 @@ package com.startjava.lesson_2_3_4.calculator;
 public class Calculator {
     public static double calculate(String expression) {
         String[] elements = expression.split(" ");
-        double num1 = Double.parseDouble(elements[0]);
-        double num2 = Double.parseDouble(elements[2]);
+        int num1 = Integer.parseInt(elements[0]);
+        int num2 = Integer.parseInt(elements[2]);
         char sign = elements[1].charAt(0);
-        double result;
         switch (sign) {
             case '+':
-                result = num1 + num2;
-                break;
+                return num1 + num2;
             case '-':
-                result = num1 - num2;
-                break;
+                return num1 - num2;
             case '*':
-                result = num1 * num2;
-                break;
+                return num1 * num2;
             case '/':
-                result = num1 / num2;
-                break;
+                return (double) num1 / num2;
             case '^':
-                result = Math.pow(num1, num2);
-                break;
+                return Math.pow(num1, num2);
             case '%':
-                result = num1 % num2;
-                break;
+                return num1 % num2;
             default:
                 System.out.println("Введенный знак операции не поддерживается");
                 return 0;
         }
-        return result;
     }
 }
