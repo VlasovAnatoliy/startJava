@@ -6,19 +6,19 @@ public class CalculatorTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String answer = "yes";
-        do {
-            if ("yes".equals(answer)) {
-                System.out.println("Введите математическое выражение: ");
-                String expression = scanner.nextLine();
-                double result = Calculator.calculate(expression);
-                printResult(expression, result);
-            }
-            System.out.println("Хотите продолжить вычисления? [yes/no]");
+        while (answer.equals("yes")) {
+            System.out.println("Введите математическое выражение:");
+            String expression = scanner.nextLine();
+            double result = Calculator.calculate(expression);
+            printResult(expression, result);
+            System.out.println("Хотите продолжить вычисления? [yes/no]:");
             answer = scanner.nextLine();
-        } while (!"no".equals(answer));
-        System.out.println("Работа программы завершена.");
+            if (!answer.equals("yes") && !answer.equals("no")) {
+                System.out.println("Некорректный ответ.");
+            }
+        }
+        System.out.println("Работа программы завершена");
     }
-
 
     public static void printResult(String expression, double result) {
         if (result == (int) result) {
