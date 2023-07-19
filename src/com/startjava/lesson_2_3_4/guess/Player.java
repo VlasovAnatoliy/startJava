@@ -5,12 +5,12 @@ import java.util.Arrays;
 public class Player {
     private final String name;
     private final int[] attempts;
-    private int attemptsCount;
+    private int countAttempts;
+    public static final int MAX_ATTEMPTS = 10;
 
     public Player(String name) {
         this.name = name;
-        this.attempts = new int[10];
-        this.attemptsCount = 0;
+        this.attempts = new int[MAX_ATTEMPTS];
     }
 
     public String getName() {
@@ -18,11 +18,21 @@ public class Player {
     }
 
     public int[] getAttempts() {
-        return Arrays.copyOf(attempts, attemptsCount);
+        return Arrays.copyOf(attempts, countAttempts);
     }
 
     public void addAttempt(int number) {
-        attempts[attemptsCount] = number;
-        attemptsCount++;
+        if (countAttempts < MAX_ATTEMPTS) {
+            attempts[countAttempts] = number;
+            countAttempts++;
+            if (countAttempts == MAX_ATTEMPTS) {
+                System.out.println("У " + name + " закончились попытки");
+            }
+        }
+    }
+
+    public void clearAttempts() {
+        Arrays.fill(attempts, 0);
+        countAttempts = 0;
     }
 }

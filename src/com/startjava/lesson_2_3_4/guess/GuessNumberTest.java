@@ -1,6 +1,5 @@
 package com.startjava.lesson_2_3_4.guess;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class GuessNumberTest {
@@ -11,21 +10,20 @@ public class GuessNumberTest {
         System.out.print("Введите имя второго игрока: ");
         Player player2 = new Player(scanner.nextLine());
         GuessNumber guessNumber = new GuessNumber(player1, player2);
-        guessNumber.play();
-        System.out.println("Названные числа игроками:");
-        displayAttempts(player1);
-        displayAttempts(player2);
-        System.out.print("Хотите продолжить игру? [yes/no]: ");
-        String answer = scanner.nextLine();
-        if (answer.equalsIgnoreCase("yes")) {
-            guessNumber.play();
-            System.out.println("Названные числа игроками:");
-            displayAttempts(player1);
-            displayAttempts(player2);
+        String answer = "yes";
+        while (!answer.equals("no")) {
+            if ("yes".equals(answer)) {
+                guessNumber.play();
+            }
+            System.out.print("Хотите продолжить игру? [yes/no]: ");
+            answer = scanner.nextLine();
+            if (answer.isEmpty()) {
+                continue;
+            }
+            if ("yes".equals(answer)) {
+                guessNumber.restartGame();
+            }
         }
-    }
-    private static void displayAttempts(Player player) {
-        int[] attempts = player.getAttempts();
-        System.out.println(player.getName() + ": " + Arrays.toString(attempts));
+        scanner.close();
     }
 }
