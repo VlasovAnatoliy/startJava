@@ -1,12 +1,10 @@
 package com.startjava.lesson_2_3_4.guess;
 
-import java.util.Arrays;
-
 public class Player {
+    public static final int MAX_ATTEMPTS = 10;
     private final String name;
     private final int[] attempts;
     private int countAttempts;
-    public static final int MAX_ATTEMPTS = 10;
 
     public Player(String name) {
         this.name = name;
@@ -18,21 +16,22 @@ public class Player {
     }
 
     public int[] getAttempts() {
-        return Arrays.copyOf(attempts, countAttempts);
+        int[] filledAttempts = new int[countAttempts];
+        System.arraycopy(attempts, 0, filledAttempts, 0, countAttempts);
+        return filledAttempts;
     }
 
     public void addAttempt(int number) {
         if (countAttempts < MAX_ATTEMPTS) {
             attempts[countAttempts] = number;
             countAttempts++;
-            if (countAttempts == MAX_ATTEMPTS) {
-                System.out.println("У " + name + " закончились попытки");
-            }
         }
     }
 
     public void clearAttempts() {
-        Arrays.fill(attempts, 0);
+        for (int i = 0; i < countAttempts; i++) {
+            attempts[i] = 0;
+        }
         countAttempts = 0;
     }
 }
