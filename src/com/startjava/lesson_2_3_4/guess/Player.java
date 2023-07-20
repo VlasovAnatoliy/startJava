@@ -1,5 +1,7 @@
 package com.startjava.lesson_2_3_4.guess;
 
+import java.util.Arrays;
+
 public class Player {
     public static final int MAX_ATTEMPTS = 10;
     private final String name;
@@ -16,9 +18,7 @@ public class Player {
     }
 
     public int[] getAttempts() {
-        int[] filledAttempts = new int[countAttempts];
-        System.arraycopy(attempts, 0, filledAttempts, 0, countAttempts);
-        return filledAttempts;
+        return Arrays.copyOf(attempts, countAttempts);
     }
 
     public void addAttempt(int number) {
@@ -29,9 +29,7 @@ public class Player {
     }
 
     public void clearAttempts() {
-        for (int i = 0; i < countAttempts; i++) {
-            attempts[i] = 0;
-        }
+        Arrays.fill(attempts, 0, countAttempts, 0);
         countAttempts = 0;
     }
 }

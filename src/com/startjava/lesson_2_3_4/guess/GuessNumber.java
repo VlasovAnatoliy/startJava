@@ -19,19 +19,28 @@ public class GuessNumber {
         Player currentPlayer = player1;
         System.out.println("Игра началась! У каждого игрока по 10 попыток.");
         while (true) {
-            int guessNumber = readNumber(scanner, currentPlayer);
+            int guessNumber = inputNumber(scanner, currentPlayer);
             currentPlayer.addAttempt(guessNumber);
-            if (guessNumber == secretNumber) {
+            if (isGuessCorrect(guessNumber)) {
                 System.out.println(currentPlayer.getName() + ", вы угадали число " + secretNumber + " с "
                         + currentPlayer.getAttempts().length + " попытки");
                 break;
             }
-            if (player1.getAttempts().length == Player.MAX_ATTEMPTS
-                    && player2.getAttempts().length == Player.MAX_ATTEMPTS) {
+            if (isAttemptsOver(player1) && isAttemptsOver(player2)) {
                 System.out.println("У обоих игроков закончились попытки.");
-                break;
+                String restartAnswer;
+                do {
+                    System.out.print("Хотите начать игру заново? [yes/no]: ");
+                    restartAnswer = scanner.nextLine();
+                } while (!"yes".equalsIgnoreCase(restartAnswer) && !"no".equalsIgnoreCase(restartAnswer));
+                if ("yes".equalsIgnoreCase(restartAnswer)) {
+                    restartGame();
+                    continue;
+                } else {
+                    break;
+                }
             }
-            if (guessNumber < secretNumber) {
+            if (isGuessLess(guessNumber)) {
                 System.out.println("Число " + guessNumber + " меньше загаданного");
             } else {
                 System.out.println("Число " + guessNumber + " больше загаданного");
@@ -48,7 +57,7 @@ public class GuessNumber {
         secretNumber = (int) (Math.random() * MAX_NUMBER) + 1;
     }
 
-    private int readNumber(Scanner scanner, Player currentPlayer) {
+    private int inputNumber(Scanner scanner, Player currentPlayer) {
         int number;
         do {
             System.out.print(currentPlayer.getName() + ", введите число от 1 до " + MAX_NUMBER + ": ");
@@ -61,7 +70,17 @@ public class GuessNumber {
         return number;
     }
 
+    private boolean isGuessCorrect(int guessNumber) {
+        return guessNumber == secretNumber;
+    }
 
+    private boolean isGuessLess(int guessNumber) {
+        return guessNumber < secretNumber;
+    }
+
+    private boolean isAttemptsOver(Player player) {
+        return player.getAttempts().length == Player.MAX_ATTEMPTS;
+    }
 
     private static void displayAttempts(Player player) {
         int[] attempts = player.getAttempts();
