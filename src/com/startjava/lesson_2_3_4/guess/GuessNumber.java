@@ -14,6 +14,7 @@ public class GuessNumber {
     }
 
     public void play() {
+        restartGame();
         generateSecretNumber();
         Scanner scanner = new Scanner(System.in);
         Player currentPlayer = player1;
@@ -22,35 +23,22 @@ public class GuessNumber {
             int guessNumber = inputNumber(scanner, currentPlayer);
             currentPlayer.addAttempt(guessNumber);
             if (isGuessCorrect(guessNumber)) {
-                System.out.println(currentPlayer.getName() + ", вы угадали число " + secretNumber + " с "
-                        + currentPlayer.getAttempts().length + " попытки");
+                displayWinMessage(currentPlayer);
                 break;
             }
             if (isAttemptsOver(player1) && isAttemptsOver(player2)) {
                 System.out.println("У обоих игроков закончились попытки.");
-                String restartAnswer;
-                do {
-                    System.out.print("Хотите начать игру заново? [yes/no]: ");
-                    restartAnswer = scanner.nextLine();
-                } while (!"yes".equalsIgnoreCase(restartAnswer) && !"no".equalsIgnoreCase(restartAnswer));
-                if ("yes".equalsIgnoreCase(restartAnswer)) {
-                    restartGame();
-                    continue;
-                } else {
-                    break;
-                }
+                break;
             }
-            if (isGuessLess(guessNumber)) {
-                System.out.println("Число " + guessNumber + " меньше загаданного");
-            } else {
-                System.out.println("Число " + guessNumber + " больше загаданного");
-            }
+            compareNumber(guessNumber, currentPlayer);
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
-        System.out.println("Игра окончена.");
-        System.out.println("Названные числа игроками:");
-        displayAttempts(player1);
-        displayAttempts(player2);
+        displayGameResults();
+    }
+
+    private void displayWinMessage(Player player) {
+        System.out.println(player.getName() + ", вы угадали число " + secretNumber + " с "
+                + player.getAttempts().length + " попытки");
     }
 
     private void generateSecretNumber() {
@@ -74,12 +62,19 @@ public class GuessNumber {
         return guessNumber == secretNumber;
     }
 
-    private boolean isGuessLess(int guessNumber) {
-        return guessNumber < secretNumber;
-    }
-
     private boolean isAttemptsOver(Player player) {
         return player.getAttempts().length == Player.MAX_ATTEMPTS;
+    }
+
+    private void compareNumber(int guessNumber, Player currentPlayer) {
+        if (guessNumber == secretNumber) {
+            System.out.println("Вы угадали число " + secretNumber + " с " +
+                    currentPlayer.getCountAttempts() + " попытки");
+        } else if (guessNumber < secretNumber) {
+            System.out.println("Число " + guessNumber + " меньше загаданного");
+        } else {
+            System.out.println("Число " + guessNumber + " больше загаданного");
+        }
     }
 
     private static void displayAttempts(Player player) {
@@ -89,6 +84,13 @@ public class GuessNumber {
             System.out.print(attempt + " ");
         }
         System.out.println();
+    }
+
+    private void displayGameResults() {
+        System.out.println("Игра окончена.");
+        System.out.println("Названные числа игроками:");
+        displayAttempts(player1);
+        displayAttempts(player2);
     }
 
     public void restartGame() {

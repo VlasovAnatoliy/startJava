@@ -17,15 +17,19 @@ public class Player {
         return name;
     }
 
-    public int[] getAttempts() {
-        return Arrays.copyOf(attempts, countAttempts);
-    }
-
     public void addAttempt(int number) {
         if (countAttempts < MAX_ATTEMPTS) {
             attempts[countAttempts] = number;
             countAttempts++;
         }
+    }
+
+    public int[] getAttempts() {
+        return Arrays.copyOf(attempts, countAttempts);
+    }
+
+    public int getCountAttempts() {
+        return countAttempts;
     }
 
     public void clearAttempts() {
